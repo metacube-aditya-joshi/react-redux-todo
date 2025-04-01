@@ -8,8 +8,7 @@ const TodoForm = ({ action, todoId, existingTitle, existingDescription }) => {
   const [description, setDescription] = useState(existingDescription || '');
 
   useEffect(() => {
-    // If it's an update, set the existing values into the state
-    if (action === 'updateTodo') {
+       if (action === 'updateTodo') {
       setTitle(existingTitle);
       setDescription(existingDescription);
     }

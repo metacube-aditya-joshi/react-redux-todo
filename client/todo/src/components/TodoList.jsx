@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTodos, updateTodo, deleteTodo } from "../redux/slices/todoSlice";
+import { fetchTodos, deleteTodo } from "../redux/slices/todoSlice";
 import TodoForm from "./TodoForm";
 
 const TodoList = () => {
