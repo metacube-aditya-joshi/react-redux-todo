@@ -1,0 +1,107 @@
+/* src/styles.css */
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for the Todo App */
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* Todo List Styles */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fafafa;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+li h3 {
+  margin: 0;
+  color: #333;
+}
+
+li p {
+  margin: 0;
+  color: #666;
+}
+
+/* Button Styles */
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button.add {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.add:hover {
+  background-color: #45a049;
+}
+
+button.update {
+  background-color: #ffa500;
+  color: white;
+}
+
+button.update:hover {
+  background-color: #ff8c00;
+}
+
+button.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+button.delete:hover {
+  background-color: #e53935;
+}
+
+/* Loading and Error Messages */
+.loading {
+  text-align: center;
+  font-size: 20px;
+  color: #888;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+}
