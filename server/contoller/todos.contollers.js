@@ -1,10 +1,10 @@
-import { todos } from "../index.js"; // Corrected path to reference todos in server.js
+import { todos } from "../index.js";
 
 const fetchTodos = (req, res) => {
   try {
     return res.status(200).json(todos);
   } catch (error) {
-    res.status(401).json("Error: " + error.message);
+    res.status(500).json("Error: " + error.message);
   }
 };
 
@@ -26,7 +26,7 @@ const addTodo = (req, res) => {
     todos.push(newTodo);
     res.status(201).json(newTodo);
   } catch (error) {
-    res.status(401).json("Error: " + error.message);// 500 server error
+    res.status(500).json("Error: " + error.message);
   }
 };
 
@@ -46,7 +46,7 @@ const updateTodo = (req, res) => {
 
     res.status(200).json(todo);
   } catch (error) {
-    res.status(401).json("Error: " + error.message);
+    res.status(500).json("Error: " + error.message);
   }
 };
 
@@ -59,10 +59,10 @@ const deleteTodo = (req, res) => {
       return res.status(404).json({ message: "Todo not found" });
     }
 
-    todos.splice(index, 1); // Remove the todo from the array
+    todos.splice(index, 1);
     res.status(200).json({ message: "Todo deleted" });
   } catch (error) {
-    res.status(401).json("Error: " + error.message);
+    res.status(500).json("Error: " + error.message);
   }
 };
 
