@@ -1,27 +1,31 @@
-/* src/styles.css */
-
-/* General Styles */
+/* General Styles for App */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Container for the Todo App */
 .App {
-  max-width: 600px;
+  width: 75vw; 
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px; 
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 /* Heading */
 h1 {
   text-align: center;
   color: #333;
+  font-size: 32px;
+  margin-bottom: 30px;
 }
 
 /* Todo List Styles */
@@ -34,31 +38,38 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 20px; 
   background-color: #fafafa;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px; 
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 li h3 {
   margin: 0;
   color: #333;
+  font-size: 22px;
 }
 
 li p {
   margin: 0;
   color: #666;
+  font-size: 16px; 
+}
+
+li button {
+  margin-left: 15px; 
 }
 
 /* Button Styles */
 button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
+  padding: 12px 20px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px; 
   transition: background-color 0.3s ease;
+  border: none;
 }
 
 button:hover {
@@ -68,6 +79,7 @@ button:hover {
 button.add {
   background-color: #4CAF50;
   color: white;
+  font-weight: bold;
 }
 
 button.add:hover {
@@ -92,16 +104,143 @@ button.delete:hover {
   background-color: #e53935;
 }
 
-/* Loading and Error Messages */
-.loading {
-  text-align: center;
-  font-size: 20px;
-  color: #888;
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
 }
 
-.error {
-  color: red;
+.modal-content {
+  background: linear-gradient(145deg, #f8f9fa, #e2e6ea);
+  padding: 40px; 
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 500px; 
+  max-width: 100%;
   text-align: center;
+  animation: fadeIn 0.3s ease-out;
+  transition: all 0.3s ease-in-out;
+}
+form{
+  padding: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content h2,
+.modal-content h3 {
+  font-size: 26px;
+  color: #333;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 15px; 
+  margin: 15px 0; 
+  border-radius: 8px;
+  border: 1px solid #ccc;
   font-size: 16px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+textarea {
+  min-height: 150px; 
+}
+
+
+
+.submit {
+  background-color: #28a745;
+  color: white;
+}
+
+.submit:hover {
+  background-color: #218838;
+}
+
+.cancel {
+  background-color: #f44336;
+  color: white;
+}
+
+.cancel:hover {
+  background-color: #e53935;
+}
+
+/* Delete Confirmation Modal */
+.delete-confirmation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.delete-confirmation-content {
+  background: #fff;
+  padding: 40px; 
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 400px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.delete-confirmation-content h3 {
+  color: #f44336;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.delete-confirmation-content .modal-button {
+  width: 48%;
   margin-top: 20px;
+}
+
+.delete-confirmation-content .modal-button.cancel {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.delete-confirmation-content .modal-button.cancel:hover {
+  background-color: #45a049;
+}
+
+.delete-confirmation-content .modal-button.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-confirmation-content .modal-button.delete:hover {
+  background-color: #e53935;
 }

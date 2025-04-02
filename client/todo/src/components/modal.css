@@ -1,0 +1,146 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+  }
+  
+  .modal-content {
+    background: linear-gradient(145deg, #f8f9fa, #e2e6ea);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 100%;
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .modal-content h2,
+  .modal-content h3 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  textarea {
+    min-height: 120px;
+  }
+  
+  .modal-button {
+    padding: 12px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 40%;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .submit:hover {
+    background-color: #218838;
+  }
+  
+  .cancel {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .cancel:hover {
+    background-color: #e53935;
+  }
+  
+
+  .delete-confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+  }
+  
+  .delete-confirmation-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .delete-confirmation-content h3 {
+    color: #f44336;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .delete-confirmation-content .modal-button {
+    width: 40%;
+    margin: 3px;
+    margin-top: 15px;
+  }
+  
+  .delete-confirmation-content .modal-button.cancel {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .delete-confirmation-content .modal-button.cancel:hover {
+    background-color: #45a049;
+  }
+  
+  .delete-confirmation-content .modal-button.delete {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .delete-confirmation-content .modal-button.delete:hover {
+    background-color: #e53935;
+  }
+  

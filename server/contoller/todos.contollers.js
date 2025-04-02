@@ -26,7 +26,7 @@ const addTodo = (req, res) => {
     todos.push(newTodo);
     res.status(201).json(newTodo);
   } catch (error) {
-    res.status(401).json("Error: " + error.message);
+    res.status(401).json("Error: " + error.message);// 500 server error
   }
 };
 

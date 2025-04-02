@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTodos, deleteTodo } from "../redux/slices/todoSlice";
 import TodoForm from "./TodoForm";
+import './modal.css';
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const TodoList = () => {
   const [currentTodoId, setCurrentTodoId] = useState(null);
   const [currentTitle, setCurrentTitle] = useState('');
   const [currentDescription, setCurrentDescription] = useState('');
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   useEffect(() => {
     if (status === "idle") {
@@ -26,7 +28,17 @@ const TodoList = () => {
   };
 
   const handleDeleteTodo = (id) => {
-    dispatch(deleteTodo(id));
+    setCurrentTodoId(id);
+    setShowDeleteConfirmation(true);
+  };
+
+  const confirmDelete = () => {
+    dispatch(deleteTodo(currentTodoId));
+    setShowDeleteConfirmation(false);
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteConfirmation(false);
   };
 
   const handleUpdateTodo = (id, title, description) => {
@@ -37,7 +49,7 @@ const TodoList = () => {
     setCurrentDescription(description);
   };
 
-  const handleCancelForm = () => {
+  const handleCloseForm = () => {
     setIsFormVisible(false);
     setAction('');
     setCurrentTodoId(null);
@@ -51,8 +63,8 @@ const TodoList = () => {
   return (
     <div>
       <h1>Todo List</h1>
-      <button onClick={handleAddTodo}>
-       Add Todo
+      <button className="add" onClick={handleAddTodo}>
+        Add Todo
       </button>
 
       {isFormVisible && (
@@ -61,11 +73,18 @@ const TodoList = () => {
           todoId={currentTodoId}
           existingTitle={currentTitle}
           existingDescription={currentDescription}
+          onClose={handleCloseForm}
         />
       )}
 
-      {isFormVisible && (
-        <button onClick={handleCancelForm}>Cancel</button>
+      {showDeleteConfirmation && (
+        <div className="delete-confirmation-overlay">
+          <div className="delete-confirmation-content">
+            <h3>Are you sure you want to delete this todo?</h3>
+            <button className="modal-button cancel" onClick={cancelDelete}>Cancel</button>
+            <button className="modal-button delete" onClick={confirmDelete}>Delete</button>
+          </div>
+        </div>
       )}
 
       <ul>
@@ -73,8 +92,10 @@ const TodoList = () => {
           <li key={todo.id}>
             <h3>{todo.title}</h3>
             <p>{todo.description}</p>
-            <button onClick={() => handleUpdateTodo(todo.id, todo.title, todo.description)}>Update</button>
-            <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+            <div>
+            <button className="update" onClick={() => handleUpdateTodo(todo.id, todo.title, todo.description)}>Update</button>
+            <button className="delete" onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
